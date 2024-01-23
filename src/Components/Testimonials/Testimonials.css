@@ -1,0 +1,66 @@
+/* Heading underline */
+/* h1 {
+    position: relative;
+  } */
+
+.client {
+  font-family: 'Nunito', sans-serif;
+  font-size: 60px;
+  font-weight: bolder;
+
+  color: #254858;
+  margin-bottom: 20px;
+}
+
+.underline {
+  /* margin-top: 1rem; */
+  position: relative;
+  bottom: 2;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 3px;
+  background: linear-gradient(to right, red, blue);
+
+}
+
+/* Testimonial card */
+.testimonial-card {
+  margin-top: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.testimonial-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Author name and quote icon */
+.author-name {
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bolder;
+  color: rgb(17, 16, 16);
+  margin: 2px;
+  font-size: larger;
+}
+
+.quote-icon {
+  color: rgb(25, 25, 24);
+  font-size: 1rem;
+}
+
+/* Carousel animation */
+.carousel-item {
+  animation: slide-in 1s ease-in-out;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
