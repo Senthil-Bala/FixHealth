@@ -1,27 +1,20 @@
 /* Heading underline */
-/* h1 {
-    position: relative;
-  } */
-
 .client {
   font-family: 'Nunito', sans-serif;
   font-size: 60px;
   font-weight: bolder;
-
-  color: #254858;
-  margin-bottom: 20px;
+  color: #fff;
+  margin-top: 30px;
 }
 
 .underline {
-  /* margin-top: 1rem; */
   position: relative;
-  bottom: 2;
+  bottom: 2px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80%;
+  width: 100%;
   height: 3px;
-  background: linear-gradient(to right, red, blue);
-
+  background: linear-gradient(to right, rgb(244, 237, 237), rgb(254, 254, 255));
 }
 
 /* Testimonial card */
@@ -34,6 +27,8 @@
 
 .testimonial-card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  transform:scale(1.1);
+  transition: transform 0.3s ease; 
 }
 
 /* Author name and quote icon */
@@ -62,5 +57,11 @@
 
   to {
     transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    width: 100%; /* Full width for smaller screens */
   }
 }

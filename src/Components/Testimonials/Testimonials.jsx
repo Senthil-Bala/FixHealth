@@ -14,16 +14,16 @@ function Testimonials() {
   }
 
   return (
-    <div className="container">
-      <div className="text-center ">
-        <h1 className="client">What our clients say</h1>
+    <div className="container bg-tertiary">
+      <div className="text-center">
+        <h1 className="client">" What our clients says ! "</h1>
       </div>
-      <div className="underline"></div>
+      {/* <div className="underline"></div> */}
       <Carousel
         nextIcon={
           <span
             aria-hidden="true"
-            className="text-success next-prev-icon rounded-circle"
+            className="next-prev-icon rounded-circle"
           >
             <i className="fas fa-chevron-right"></i>
           </span>
@@ -31,14 +31,14 @@ function Testimonials() {
         prevIcon={
           <span
             aria-hidden="true"
-            className="text-light next-prev-icon rounded-circle"
+            className=" next-prev-icon rounded-circle"
           >
             <i className="fas fa-chevron-left"></i>
           </span>
         }
       >
         {testimonialsPairs.map((pair, index) => (
-          <Carousel.Item key={index}>
+          <Carousel.Item interval={1500} key={index}>
             <div className="d-flex justify-content-around align-items-center">
               {pair.map((ele) => (
                 <Card
@@ -49,7 +49,7 @@ function Testimonials() {
                   <Card.Img
                     variant="top"
                     src={ele.image}
-                    style={{ height: "350px", objectFit: "cover" }}
+                    style={{ height: "350px", objectFit: "fill" }}
                   />
                   <Card.Body className="text-center">
                     <Card.Title>

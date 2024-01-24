@@ -1,50 +1,88 @@
-import React,{useState} from "react";
+import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import Logo from "../assests/fixhealth.png";
 import Form from "../BookingForm/Form";
-import "./Navbar.css"
+import { FaStar } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
+import "./Navbar.css";
 function NavComponent() {
-  const [showModal, setshowModal] = useState(false)
+  const [showModal, setshowModal] = useState(false);
+  const [defaultCity, setdefaultCity] = useState("");
 
-  const handleopenModal=()=>{
-    setshowModal(true)
-  }
+  const location = useLocation();
+
+  const handleopenModal = () => {
+    setshowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setshowModal(false);
+  };
+
+  useEffect(() => {
+    // Extract city from URL parameter (assuming the parameter is named 'city')
+    const urlSearchParams = new URLSearchParams(location.search);
+    const cityParam = urlSearchParams.get("city");
+
+    if (cityParam) {
+      setdefaultCity(cityParam);
+    }
+  }, [location.search]);
   return (
-    <div>
+    <div className="header-nav">
       <div
-        className="greeting text-center"
+        className="greeting"
         style={{
-          background: "navy",
-          // height: "3rem",
+          background: "black",
+
           color: "white",
-          fontWeight: "bolder",
+          fontWeight: "900",
         }}
       >
-        <h3>Your Health is our Concern</h3>
+        <FaStar style={{ color: "gold" }} />
+        <span className="greeting">
+          Welcome to a community that cares about your well-being
+        </span>
+        <FaStar style={{ color: "gold" }} />
       </div>
-      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+      <Navbar collapseOnSelect expand="lg" className="bg-dark header">
         <Container>
           <img
             src={Logo}
             alt="FixHealth"
             style={{
-              width: "6rem",
               height: "2rem",
+              marginBottom: "15px",
             }}
           />
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Toggle
+            aria-controls="responsive-navbar-nav"
+            className="middles"
+          />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#features">Home</Nav.Link>
-              <Nav.Link href="#pricing">Services</Nav.Link>
+              <Nav.Link href="#features" style={{ color: "white" }}>
+                Home
+              </Nav.Link>
+              <Nav.Link href="#pricing" style={{ color: "white" }}>
+                Services
+              </Nav.Link>
+              <Nav.Link href="#pricing" style={{ color: "white" }}>
+                About Us
+              </Nav.Link>
+              <Nav.Link href="#pricing" style={{ color: "white" }}>
+                Blogs
+              </Nav.Link>
             </Nav>
-
-            <button onClick={handleopenModal}>Book Now</button>
-            {showModal && <Form/>}
           </Navbar.Collapse>
+          <button onClick={handleopenModal} id="book-btn">
+            Book Now
+          </button>
+          {showModal && (
+            <Form showHide={handleCloseModal} defaultCity={defaultCity} />
+          )}
         </Container>
       </Navbar>
     </div>
